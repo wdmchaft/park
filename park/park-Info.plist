@@ -34,5 +34,14 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    
+    <key>UIAppFonts</key>
+    <array>
+        <string>GothamRounded-Book.otf</string>
+    </array>
+    
+    <key>UIStatusBarStyle</key>  
+    <string>UIStatusBarStyleBlackOpaque</string> 
+    
 </dict>
 </plist>

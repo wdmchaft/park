@@ -15,6 +15,18 @@
 		FC6B6991154617AF000B9D83 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6B6990154617AF000B9D83 /* AppDelegate.m */; };
 		FC6B6994154617AF000B9D83 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6B6993154617AF000B9D83 /* ViewController.m */; };
 		FC6B6997154617AF000B9D83 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC6B6995154617AF000B9D83 /* ViewController.xib */; };
+		FC6B699E15462218000B9D83 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC6B699D15462218000B9D83 /* CoreLocation.framework */; };
+		FC6B69A315462E28000B9D83 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = FC6B69A215462E28000B9D83 /* test.png */; };
+		FC6B69A515464338000B9D83 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC6B69A415464338000B9D83 /* MapKit.framework */; };
+		FC6B69A815464735000B9D83 /* CarLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6B69A715464735000B9D83 /* CarLocation.m */; };
+		FC6B69AC15464E27000B9D83 /* small.png in Resources */ = {isa = PBXBuildFile; fileRef = FC6B69AB15464E27000B9D83 /* small.png */; };
+		FC6B69B115469321000B9D83 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC6B69AD15469320000B9D83 /* background@2x.png */; };
+		FC6B69B215469321000B9D83 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = FC6B69AE15469321000B9D83 /* background.png */; };
+		FC6B69B71546960A000B9D83 /* compass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC6B69B51546960A000B9D83 /* compass@2x.png */; };
+		FC6B69B81546960A000B9D83 /* compass.png in Resources */ = {isa = PBXBuildFile; fileRef = FC6B69B61546960A000B9D83 /* compass.png */; };
+		FC6B69BA154697C9000B9D83 /* GothamRounded-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = FC6B69B9154696E8000B9D83 /* GothamRounded-Book.otf */; };
+		FC6B69BE15469B77000B9D83 /* car.png in Resources */ = {isa = PBXBuildFile; fileRef = FC6B69BC15469B77000B9D83 /* car.png */; };
+		FC6B69BF15469B77000B9D83 /* car@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC6B69BD15469B77000B9D83 /* car@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,15 +34,30 @@
 		FC6B6980154617AE000B9D83 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FC6B6982154617AE000B9D83 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FC6B6984154617AE000B9D83 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		FC6B6988154617AE000B9D83 /* park-Info.plist */ = {isa = PBXFileReference; path = "park-Info.plist"; sourceTree = "<group>"; };
+		FC6B6988154617AE000B9D83 /* park-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "park-Info.plist"; sourceTree = "<group>"; };
 		FC6B698A154617AE000B9D83 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FC6B698C154617AE000B9D83 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		FC6B698E154617AE000B9D83 /* park-Prefix.pch */ = {isa = PBXFileReference; path = "park-Prefix.pch"; sourceTree = "<group>"; };
-		FC6B698F154617AF000B9D83 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		FC6B698E154617AE000B9D83 /* park-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "park-Prefix.pch"; sourceTree = "<group>"; };
+		FC6B698F154617AF000B9D83 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FC6B6990154617AF000B9D83 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		FC6B6992154617AF000B9D83 /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
+		FC6B6992154617AF000B9D83 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		FC6B6993154617AF000B9D83 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		FC6B6996154617AF000B9D83 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		FC6B699D15462218000B9D83 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		FC6B69A215462E28000B9D83 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
+		FC6B69A415464338000B9D83 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		FC6B69A615464735000B9D83 /* CarLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarLocation.h; sourceTree = "<group>"; };
+		FC6B69A715464735000B9D83 /* CarLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarLocation.m; sourceTree = "<group>"; };
+		FC6B69A915464AAB000B9D83 /* arrest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrest.png; path = ../../../../Desktop/arrest.png; sourceTree = "<group>"; };
+		FC6B69AB15464E27000B9D83 /* small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = small.png; sourceTree = "<group>"; };
+		FC6B69AD15469320000B9D83 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
+		FC6B69AE15469321000B9D83 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		FC6B69B51546960A000B9D83 /* compass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compass@2x.png"; sourceTree = "<group>"; };
+		FC6B69B61546960A000B9D83 /* compass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass.png; sourceTree = "<group>"; };
+		FC6B69B9154696E8000B9D83 /* GothamRounded-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothamRounded-Book.otf"; sourceTree = "<group>"; };
+		FC6B69BB15469878000B9D83 /* gothamroundedbook.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gothamroundedbook.ttf; sourceTree = "<group>"; };
+		FC6B69BC15469B77000B9D83 /* car.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car.png; sourceTree = "<group>"; };
+		FC6B69BD15469B77000B9D83 /* car@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "car@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +65,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC6B69A515464338000B9D83 /* MapKit.framework in Frameworks */,
+				FC6B699E15462218000B9D83 /* CoreLocation.framework in Frameworks */,
 				FC6B6981154617AE000B9D83 /* UIKit.framework in Frameworks */,
 				FC6B6983154617AE000B9D83 /* Foundation.framework in Frameworks */,
 				FC6B6985154617AE000B9D83 /* CoreGraphics.framework in Frameworks */,
@@ -50,6 +79,8 @@
 		FC6B6971154617AE000B9D83 = {
 			isa = PBXGroup;
 			children = (
+				FC6B69A415464338000B9D83 /* MapKit.framework */,
+				FC6B699D15462218000B9D83 /* CoreLocation.framework */,
 				FC6B6986154617AE000B9D83 /* park */,
 				FC6B697F154617AE000B9D83 /* Frameworks */,
 				FC6B697D154617AE000B9D83 /* Products */,
@@ -81,7 +112,20 @@
 				FC6B6990154617AF000B9D83 /* AppDelegate.m */,
 				FC6B6992154617AF000B9D83 /* ViewController.h */,
 				FC6B6993154617AF000B9D83 /* ViewController.m */,
+				FC6B69A615464735000B9D83 /* CarLocation.h */,
+				FC6B69A715464735000B9D83 /* CarLocation.m */,
 				FC6B6995154617AF000B9D83 /* ViewController.xib */,
+				FC6B69A915464AAB000B9D83 /* arrest.png */,
+				FC6B69A215462E28000B9D83 /* test.png */,
+				FC6B69AB15464E27000B9D83 /* small.png */,
+				FC6B69AD15469320000B9D83 /* background@2x.png */,
+				FC6B69AE15469321000B9D83 /* background.png */,
+				FC6B69B51546960A000B9D83 /* compass@2x.png */,
+				FC6B69B61546960A000B9D83 /* compass.png */,
+				FC6B69B9154696E8000B9D83 /* GothamRounded-Book.otf */,
+				FC6B69BB15469878000B9D83 /* gothamroundedbook.ttf */,
+				FC6B69BC15469B77000B9D83 /* car.png */,
+				FC6B69BD15469B77000B9D83 /* car@2x.png */,
 				FC6B6987154617AE000B9D83 /* Supporting Files */,
 			);
 			path = park;
@@ -148,8 +192,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC6B69BA154697C9000B9D83 /* GothamRounded-Book.otf in Resources */,
 				FC6B698B154617AE000B9D83 /* InfoPlist.strings in Resources */,
 				FC6B6997154617AF000B9D83 /* ViewController.xib in Resources */,
+				FC6B69A315462E28000B9D83 /* test.png in Resources */,
+				FC6B69AC15464E27000B9D83 /* small.png in Resources */,
+				FC6B69B115469321000B9D83 /* background@2x.png in Resources */,
+				FC6B69B215469321000B9D83 /* background.png in Resources */,
+				FC6B69B71546960A000B9D83 /* compass@2x.png in Resources */,
+				FC6B69B81546960A000B9D83 /* compass.png in Resources */,
+				FC6B69BE15469B77000B9D83 /* car.png in Resources */,
+				FC6B69BF15469B77000B9D83 /* car@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +216,7 @@
 				FC6B698D154617AE000B9D83 /* main.m in Sources */,
 				FC6B6991154617AF000B9D83 /* AppDelegate.m in Sources */,
 				FC6B6994154617AF000B9D83 /* ViewController.m in Sources */,
+				FC6B69A815464735000B9D83 /* CarLocation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
