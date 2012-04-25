@@ -14,9 +14,14 @@
 
 
 @interface ViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate>
+{
+    NSTimer *countdownTimer;
+    int timeTicketExpires;
+    NSTimeInterval duration;
+}
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
-@property (strong, nonatomic) CLLocation *startingPoint;
+@property (strong, nonatomic) CLLocation *carLocation;
 @property (strong, nonatomic) CLLocation *currentLocation;
 @property (strong, nonatomic) IBOutlet UILabel *latitudeLabel;
 @property (strong, nonatomic) IBOutlet UILabel *longitudeLabel;
@@ -25,8 +30,31 @@
 @property (strong, nonatomic) IBOutlet UILabel *verticalAccuracyLabel;
 @property (strong, nonatomic) IBOutlet UILabel *distanceTraveledLabel;
 
+@property (strong, nonatomic) IBOutlet UILabel *minutesLeftLabel;
+
 @property (strong, nonatomic) IBOutlet MKMapView *map;
 
 @property (strong, nonatomic) IBOutlet UIImageView *compass;
+
+@property (strong, nonatomic) IBOutlet UIImageView *backgroundView;
+
+- (IBAction) closedButtonPressed;
+- (IBAction) parkButtonPressed;
+
+- (IBAction) remindMeInPressed;
+
+// i'm parked! page outlets
+
+@property (strong, nonatomic) IBOutlet UIButton *imParkedButton;
+
+@property (strong, nonatomic) IBOutlet UIImageView *clock;
+@property (strong, nonatomic) IBOutlet UILabel *remindMeInTextLabel;
+@property (strong, nonatomic) IBOutlet UILabel *remindMeInMinutes;
+@property (strong, nonatomic) IBOutlet UIButton *invisibleButton;
+
+@property (strong, nonatomic) IBOutlet UIDatePicker *countdownPickerView;
+
+- (IBAction) datePickerDateChanged;
+
 
 @end
