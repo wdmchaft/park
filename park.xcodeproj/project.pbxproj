@@ -54,7 +54,6 @@
 		FC6B69A415464338000B9D83 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		FC6B69A615464735000B9D83 /* CarLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarLocation.h; sourceTree = "<group>"; };
 		FC6B69A715464735000B9D83 /* CarLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarLocation.m; sourceTree = "<group>"; };
-		FC6B69A915464AAB000B9D83 /* arrest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrest.png; path = ../../../../Desktop/arrest.png; sourceTree = "<group>"; };
 		FC6B69AB15464E27000B9D83 /* small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = small.png; sourceTree = "<group>"; };
 		FC6B69AD15469320000B9D83 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
 		FC6B69AE15469321000B9D83 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
@@ -127,7 +126,6 @@
 				FC6B69A615464735000B9D83 /* CarLocation.h */,
 				FC6B69A715464735000B9D83 /* CarLocation.m */,
 				FC6B6995154617AF000B9D83 /* ViewController.xib */,
-				FC6B69A915464AAB000B9D83 /* arrest.png */,
 				FC6B69A215462E28000B9D83 /* test.png */,
 				FC6B69AB15464E27000B9D83 /* small.png */,
 				FC6B69AD15469320000B9D83 /* background@2x.png */,

@@ -23,6 +23,9 @@
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) CLLocation *carLocation;
 @property (strong, nonatomic) CLLocation *currentLocation;
+
+
+
 @property (strong, nonatomic) IBOutlet UILabel *latitudeLabel;
 @property (strong, nonatomic) IBOutlet UILabel *longitudeLabel;
 @property (strong, nonatomic) IBOutlet UILabel *horizontalAccuracyLabel;
@@ -35,6 +38,13 @@
 @property (strong, nonatomic) IBOutlet MKMapView *map;
 
 @property (strong, nonatomic) IBOutlet UIImageView *compass;
+
+
+// delete this
+
+@property (strong, nonatomic) IBOutlet UIImageView *compass2;
+
+
 
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundView;
 

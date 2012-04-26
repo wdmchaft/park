@@ -21,6 +21,13 @@
 @synthesize minutesLeftLabel;
 
 @synthesize compass;
+
+
+// delete this
+
+@synthesize compass2;
+
+
 @synthesize backgroundView;
 
 @synthesize imParkedButton;
@@ -31,6 +38,7 @@
 @synthesize invisibleButton;
 
 @synthesize countdownPickerView;
+
 
 
 
@@ -97,9 +105,6 @@
         self.carLocation = newLocation;
     }
     
-    // display location on the map
-    map.showsUserLocation = YES;
-    
     // set map zoom and location
     CLLocationCoordinate2D coord;
     
@@ -144,8 +149,56 @@
 //    NSLog(@"Degress from north: %f", angle * 57.2957795);
 //    NSLog(@"Rotate to: %f",(newHeading.magneticHeading * 0.0174532925) + angle );
     
+    
+    
+    
+    // new algo to work out baring
+    
+    // currentlocation = lat1
+    // car location = lat2
+    
+    
+    float dlon = ((carLocation.coordinate.longitude - currentLocation.coordinate.longitude) * 0.0174532925);
+    
+    float y = sin(dlon) * cos(carLocation.coordinate.latitude);
+    float x = cos(currentLocation.coordinate.latitude) * sin(carLocation.coordinate.latitude) - sin(currentLocation.coordinate.latitude) * cos(carLocation.coordinate.latitude) * cos(dlon);
+    
+    int bearing = (atan2(y, x) * 57.2957795);
+    
+    int normalizedBearing = (bearing +360) % 360;
+    
+    int normalizedBearingToRadians = normalizedBearing * 0.0174532925;
+    
+    
+    NSLog(@"BARING SHOULD BE: %i", normalizedBearing);
+    
+    distanceTraveledLabel.text = [[NSString alloc] initWithFormat:@"%i", normalizedBearing];
+    
+    minutesLeftLabel.text = [[NSString alloc] initWithFormat:@"%f", newHeading.headingAccuracy];
+    
+    
     // rotate the compass image
-    compass.transform = CGAffineTransformMakeRotation((0 - (newHeading.magneticHeading * 0.0174532925)) + angle);
+    compass.transform = CGAffineTransformMakeRotation((0 - (newHeading.magneticHeading * 0.0174532925)) + normalizedBearingToRadians);
+    
+    // flip the shit
+    
+    float dlon2 = ((currentLocation.coordinate.longitude - carLocation.coordinate.longitude) * 0.0174532925);
+    
+    float y2 = sin(dlon2) * cos(currentLocation.coordinate.latitude);
+    float x2 = cos(carLocation.coordinate.latitude) * sin(currentLocation.coordinate.latitude) - sin(carLocation.coordinate.latitude) * cos(currentLocation.coordinate.latitude) * cos(dlon2);
+    
+    int bearing2 = (atan2(y2, x2) * 57.2957795);
+    
+    int normalizedBearing2 = (bearing2 + 360) % 360;
+    
+    int normalizedBeating2ToRadians = normalizedBearing2 * 0.0174532925;
+    
+    
+    // rotate new compass to test
+    compass2.transform = CGAffineTransformMakeRotation((0 - (newHeading.magneticHeading * 0.0174532925)) +normalizedBeating2ToRadians);
+    
+    
+    distanceTraveledLabel.text = [[NSString alloc] initWithFormat:@"C1: %i, C2: %i", normalizedBearing, normalizedBearing2];
     
 }
 
@@ -163,7 +216,7 @@
         
         annotationView.enabled = YES;
         annotationView.canShowCallout = YES;
-        annotationView.image=[UIImage imageNamed:@"car.png"];
+   //     annotationView.image=[UIImage imageNamed:@"car.png"];
         
         
         
