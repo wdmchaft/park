@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC18748A1549E86800D73331 /* imparkedpressed.png in Resources */ = {isa = PBXBuildFile; fileRef = FC1874861549E86800D73331 /* imparkedpressed.png */; };
+		FC18748B1549E86800D73331 /* imparkedpressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC1874871549E86800D73331 /* imparkedpressed@2x.png */; };
+		FC18748C1549E86800D73331 /* imparked.png in Resources */ = {isa = PBXBuildFile; fileRef = FC1874881549E86800D73331 /* imparked.png */; };
+		FC18748D1549E86800D73331 /* imparked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC1874891549E86800D73331 /* imparked@2x.png */; };
+		FC1874911549FBFB00D73331 /* compass_interference.png in Resources */ = {isa = PBXBuildFile; fileRef = FC18748F1549FBFB00D73331 /* compass_interference.png */; };
+		FC1874921549FBFB00D73331 /* compass_interference@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC1874901549FBFB00D73331 /* compass_interference@2x.png */; };
 		FC6B6981154617AE000B9D83 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC6B6980154617AE000B9D83 /* UIKit.framework */; };
 		FC6B6983154617AE000B9D83 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC6B6982154617AE000B9D83 /* Foundation.framework */; };
 		FC6B6985154617AE000B9D83 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC6B6984154617AE000B9D83 /* CoreGraphics.framework */; };
@@ -36,6 +42,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FC1874861549E86800D73331 /* imparkedpressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imparkedpressed.png; sourceTree = "<group>"; };
+		FC1874871549E86800D73331 /* imparkedpressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "imparkedpressed@2x.png"; sourceTree = "<group>"; };
+		FC1874881549E86800D73331 /* imparked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imparked.png; sourceTree = "<group>"; };
+		FC1874891549E86800D73331 /* imparked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "imparked@2x.png"; sourceTree = "<group>"; };
+		FC18748F1549FBFB00D73331 /* compass_interference.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass_interference.png; sourceTree = "<group>"; };
+		FC1874901549FBFB00D73331 /* compass_interference@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compass_interference@2x.png"; sourceTree = "<group>"; };
 		FC6B697C154617AE000B9D83 /* park.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = park.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC6B6980154617AE000B9D83 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FC6B6982154617AE000B9D83 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -142,6 +154,12 @@
 				FC6B69C515476730000B9D83 /* close@2x.png */,
 				FC6B69C81547709C000B9D83 /* clock@2x.png */,
 				FC6B69C91547709C000B9D83 /* clock.png */,
+				FC1874861549E86800D73331 /* imparkedpressed.png */,
+				FC1874871549E86800D73331 /* imparkedpressed@2x.png */,
+				FC1874881549E86800D73331 /* imparked.png */,
+				FC1874891549E86800D73331 /* imparked@2x.png */,
+				FC18748F1549FBFB00D73331 /* compass_interference.png */,
+				FC1874901549FBFB00D73331 /* compass_interference@2x.png */,
 				FC6B6987154617AE000B9D83 /* Supporting Files */,
 			);
 			path = park;
@@ -225,6 +243,12 @@
 				FC6B69C715476730000B9D83 /* close@2x.png in Resources */,
 				FC6B69CA1547709C000B9D83 /* clock@2x.png in Resources */,
 				FC6B69CB1547709C000B9D83 /* clock.png in Resources */,
+				FC18748A1549E86800D73331 /* imparkedpressed.png in Resources */,
+				FC18748B1549E86800D73331 /* imparkedpressed@2x.png in Resources */,
+				FC18748C1549E86800D73331 /* imparked.png in Resources */,
+				FC18748D1549E86800D73331 /* imparked@2x.png in Resources */,
+				FC1874911549FBFB00D73331 /* compass_interference.png in Resources */,
+				FC1874921549FBFB00D73331 /* compass_interference@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,6 +374,7 @@
 				FC6B699C154617AF000B9D83 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

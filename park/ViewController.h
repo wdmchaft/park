@@ -20,51 +20,33 @@
     NSTimeInterval duration;
 }
 
-@property (strong, nonatomic) CLLocationManager *locationManager;
-@property (strong, nonatomic) CLLocation *carLocation;
-@property (strong, nonatomic) CLLocation *currentLocation;
-
-
-
-@property (strong, nonatomic) IBOutlet UILabel *latitudeLabel;
-@property (strong, nonatomic) IBOutlet UILabel *longitudeLabel;
-@property (strong, nonatomic) IBOutlet UILabel *horizontalAccuracyLabel;
-@property (strong, nonatomic) IBOutlet UILabel *altitudeLabel;
-@property (strong, nonatomic) IBOutlet UILabel *verticalAccuracyLabel;
-@property (strong, nonatomic) IBOutlet UILabel *distanceTraveledLabel;
-
-@property (strong, nonatomic) IBOutlet UILabel *minutesLeftLabel;
-
-@property (strong, nonatomic) IBOutlet MKMapView *map;
-
-@property (strong, nonatomic) IBOutlet UIImageView *compass;
-
-
-// delete this
-
-@property (strong, nonatomic) IBOutlet UIImageView *compass2;
-
-
-
-@property (strong, nonatomic) IBOutlet UIImageView *backgroundView;
 
 - (IBAction) closedButtonPressed;
 - (IBAction) parkButtonPressed;
-
 - (IBAction) remindMeInPressed;
+- (IBAction) datePickerDateChanged;
+
+
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) CLLocation *carLocation;
+@property (strong, nonatomic) CLLocation *currentLocation;
+@property (strong, nonatomic) IBOutlet UILabel *distanceTraveledLabel;
+@property (strong, nonatomic) IBOutlet UILabel *minutesLeftLabel;
+@property (strong, nonatomic) IBOutlet MKMapView *map;
+@property (strong, nonatomic) IBOutlet UIImageView *compass;
+@property (strong, nonatomic) IBOutlet UIImageView *compassInterference;
+@property (strong, nonatomic) IBOutlet UIButton *closeButton;
+@property (strong, nonatomic) IBOutlet UIButton *closedButtonOverlay;
 
 // i'm parked! page outlets
-
+@property (strong, nonatomic) IBOutlet UIImageView *backgroundView;
 @property (strong, nonatomic) IBOutlet UIButton *imParkedButton;
-
 @property (strong, nonatomic) IBOutlet UIImageView *clock;
 @property (strong, nonatomic) IBOutlet UILabel *remindMeInTextLabel;
 @property (strong, nonatomic) IBOutlet UILabel *remindMeInMinutes;
 @property (strong, nonatomic) IBOutlet UIButton *invisibleButton;
-
 @property (strong, nonatomic) IBOutlet UIDatePicker *countdownPickerView;
 
-- (IBAction) datePickerDateChanged;
 
 
 @end

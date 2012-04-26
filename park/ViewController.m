@@ -14,42 +14,72 @@
 
 @implementation ViewController
 
-@synthesize locationManager, carLocation, latitudeLabel, longitudeLabel, horizontalAccuracyLabel, altitudeLabel, verticalAccuracyLabel, distanceTraveledLabel, currentLocation;
-
+@synthesize locationManager, carLocation, distanceTraveledLabel, currentLocation;
 @synthesize map;
-
 @synthesize minutesLeftLabel;
-
 @synthesize compass;
-
-
-// delete this
-
-@synthesize compass2;
-
-
 @synthesize backgroundView;
+@synthesize compassInterference;
+@synthesize closeButton;
+@synthesize closedButtonOverlay;
 
+// i'm parked page outlets
 @synthesize imParkedButton;
 @synthesize clock;
 @synthesize remindMeInTextLabel;
 @synthesize remindMeInMinutes;
-
 @synthesize invisibleButton;
-
 @synthesize countdownPickerView;
 
 
-
-
+- (void)checkStatusOnLoadAndLoadCorrectPage
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData *getLocationAndTimeData = [[defaults dictionaryRepresentation] objectForKey:@"locationAndTime"];
+    
+    // decode the shit
+    NSDictionary *locationAndTime = [NSKeyedUnarchiver unarchiveObjectWithData:getLocationAndTimeData];
+    
+    if (locationAndTime == NULL)
+    {
+        NSLog(@"load up the homepage");
+    }
+    else 
+    {
+        NSLog(@"load up the map page");
+        carLocation = [locationAndTime objectForKey:@"carLocation"];
+        backgroundView.hidden = YES;
+        imParkedButton.hidden = YES;
+        clock.hidden = YES;
+        remindMeInTextLabel.hidden = YES;
+        remindMeInMinutes.hidden = YES;
+        invisibleButton.hidden = YES;
+        countdownPickerView.hidden = YES;
+        closeButton.hidden = NO;
+        closedButtonOverlay.hidden = NO;
+        
+        // add car location to map
+        CLLocationCoordinate2D coordinate;
+        coordinate.latitude = carLocation.coordinate.latitude;
+        coordinate.longitude = carLocation.coordinate.longitude;
+        
+        CarLocation *carLocationAnnotation = [[CarLocation alloc] initWithName:@"Your Car" address:@"is here" coordinate:coordinate];
+        
+        // display location on the map
+        map.showsUserLocation = YES;
+        
+        [map addAnnotation:carLocationAnnotation];
+    }
+    
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    
     map.showsUserLocation = YES;
     
+    [self checkStatusOnLoadAndLoadCorrectPage];
     
     // change font for distance 
     distanceTraveledLabel.font = [UIFont fontWithName:@"Gotham Rounded" size:20.0];
@@ -68,24 +98,12 @@
     [locationManager startUpdatingHeading];
     
     
-    
-    
-    
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
-    
-    
-    self.locationManager = nil;
-    self.latitudeLabel = nil;
-    self.longitudeLabel = nil;
-    self.horizontalAccuracyLabel = nil;
-    self.altitudeLabel = nil;
-    self.verticalAccuracyLabel = nil;
-    self.distanceTraveledLabel = nil;
     
 }
 
@@ -132,75 +150,74 @@
 }
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading
-{
+{    
     
-//    NSLog(@"New magnetic heading: %f", newHeading.magneticHeading);
-//	NSLog(@"New true heading: %f", newHeading.trueHeading);
-//    
-//    NSLog(@"accuracy: %f", newHeading.headingAccuracy);
+    if (newHeading.headingAccuracy > 0)
+    {
+        
+        if (compass.hidden)
+        {
+            // show the compass
+            [compassInterference setAlpha:0.0];
+            [UIView beginAnimations:nil context:NULL];
+            [UIView setAnimationDuration:0.5];
+            [compassInterference setAlpha:1.0];
+            [UIView commitAnimations];
+            compassInterference.hidden = YES;
+            
+            compass.hidden = NO;
+            [compass setAlpha:0.0];
+            [UIView beginAnimations:nil context:NULL];
+            [UIView setAnimationDuration:0.5];
+            [compass setAlpha:1.0];
+            [UIView commitAnimations];
+        }
+        
+        // algo is based upon http://www.movable-type.co.uk/scripts/latlong.html
+        
+        float dlon = ((carLocation.coordinate.longitude - currentLocation.coordinate.longitude) * 0.0174532925);
+        
+        float y = sin(dlon) * cos(carLocation.coordinate.latitude * 0.0174532925);
+        float x = cos(currentLocation.coordinate.latitude * 0.0174532925) * sin(carLocation.coordinate.latitude * 0.0174532925) - sin(currentLocation.coordinate.latitude* 0.0174532925) * cos(carLocation.coordinate.latitude* 0.0174532925) * cos(dlon);
+        
+        int bearing = (atan2(y, x) * 57.2957795);
+        int normalizedBearing = (bearing +360) % 360;
+        int normalizedBearingToRadians = normalizedBearing * 0.0174532925;
+        
+        NSLog(@"BARING SHOULD BE: %i", normalizedBearing);
+        
+        // rotate the compass image
+        compass.transform = CGAffineTransformMakeRotation((0 - (newHeading.trueHeading * 0.0174532925)) + normalizedBearingToRadians);
+        
+        // distanceTraveledLabel.text = [[NSString alloc] initWithFormat:@"Bearing: %i", normalizedBearing];
+
+    }
+    else 
+    {
+        // only run this once or the animations would keep going
+        if (!compass.hidden)
+        {
+            // hide the compass
+            [compass setAlpha:1.0];
+            [UIView beginAnimations:nil context:NULL];
+            [UIView setAnimationDuration:0.5];
+            [compass setAlpha:0.0];
+            [UIView commitAnimations];
+            compass.hidden = YES;
+            
+            
+            compassInterference.hidden = NO;
+            [compassInterference setAlpha:0.0];
+            [UIView beginAnimations:nil context:NULL];
+            [UIView setAnimationDuration:0.5];
+            [compassInterference setAlpha:1.0];
+            [UIView commitAnimations];
+            
+        }
     
+    }
     
-    // work out the shit i don't understand
-//    float dy = currentLocation.coordinate.latitude - carLocation.coordinate.latitude;
-//    float dx = cosf(M_PI/180*carLocation.coordinate.latitude)*(currentLocation.coordinate.longitude - carLocation.coordinate.longitude);
-//    float angle = atan2f(dy, dx);
-    
-//    NSLog(@"Angle: %f", angle);
-//    NSLog(@"Degress from north: %f", angle * 57.2957795);
-//    NSLog(@"Rotate to: %f",(newHeading.magneticHeading * 0.0174532925) + angle );
-    
-    
-    
-    
-    // new algo to work out baring
-    
-    // algo is based upon http://www.movable-type.co.uk/scripts/latlong.html
-    
-    // currentlocation = lat1
-    // car location = lat2
-    
-    
-    float dlon = ((carLocation.coordinate.longitude - currentLocation.coordinate.longitude) * 0.0174532925);
-    
-    float y = sin(dlon) * cos(carLocation.coordinate.latitude);
-    float x = cos(currentLocation.coordinate.latitude) * sin(carLocation.coordinate.latitude) - sin(currentLocation.coordinate.latitude) * cos(carLocation.coordinate.latitude) * cos(dlon);
-    
-    int bearing = (atan2(y, x) * 57.2957795);
-    
-    int normalizedBearing = (bearing +360) % 360;
-    
-    int normalizedBearingToRadians = normalizedBearing * 0.0174532925;
-    
-    
-    NSLog(@"BARING SHOULD BE: %i", normalizedBearing);
-    
-    distanceTraveledLabel.text = [[NSString alloc] initWithFormat:@"%i", normalizedBearing];
-    
-    minutesLeftLabel.text = [[NSString alloc] initWithFormat:@"%f", newHeading.headingAccuracy];
-    
-    
-    // rotate the compass image
-    compass.transform = CGAffineTransformMakeRotation((0 - (newHeading.magneticHeading * 0.0174532925)) + normalizedBearingToRadians);
-    
-//    // flip the shit
-//    
-//    float dlon2 = ((currentLocation.coordinate.longitude - carLocation.coordinate.longitude) * 0.0174532925);
-//    
-//    float y2 = sin(dlon2) * cos(currentLocation.coordinate.latitude);
-//    float x2 = cos(carLocation.coordinate.latitude) * sin(currentLocation.coordinate.latitude) - sin(carLocation.coordinate.latitude) * cos(currentLocation.coordinate.latitude) * cos(dlon2);
-//    
-//    int bearing2 = (atan2(y2, x2) * 57.2957795);
-//    
-//    int normalizedBearing2 = (bearing2 + 360) % 360;
-//    
-//    int normalizedBeating2ToRadians = normalizedBearing2 * 0.0174532925;
-//    
-//    
-//    // rotate new compass to test
-//    compass2.transform = CGAffineTransformMakeRotation((0 - (newHeading.magneticHeading * 0.0174532925)) +normalizedBeating2ToRadians);
-//    
-//    
-//    distanceTraveledLabel.text = [[NSString alloc] initWithFormat:@"C1: %i, C2: %i", normalizedBearing, normalizedBearing2];
+
     
 }
 
@@ -218,12 +235,9 @@
         
         annotationView.enabled = YES;
         annotationView.canShowCallout = YES;
-   //     annotationView.image=[UIImage imageNamed:@"car.png"];
-        
-        
+        annotationView.image=[UIImage imageNamed:@"car.png"];
         
         return annotationView;
-        
     }
 
     return nil;    
@@ -270,6 +284,11 @@
     invisibleButton.hidden = NO;
     invisibleButton.enabled = YES;
     
+    closeButton.hidden = NO;
+    closedButtonOverlay.hidden = NO;
+    
+    compassInterference.hidden = YES;
+    
     // remove all annotations 
     
     [map removeAnnotations:map.annotations];
@@ -301,6 +320,8 @@
     
     // decode the shit
     NSDictionary *locationAndTime = [NSKeyedUnarchiver unarchiveObjectWithData:getLocationAndTimeData];
+    
+    NSLog(@"BLAJHSGKSFDLFSDJLFKDS: %@", locationAndTime);
     
     // get current timestamp
     int currentTimestamp = [[NSDate date] timeIntervalSince1970];
@@ -336,9 +357,15 @@
     remindMeInMinutes.hidden = YES;
     backgroundView.hidden = YES;
     countdownPickerView.hidden = YES;
+    closeButton.hidden = NO;
+    closedButtonOverlay.hidden = NO;
     
     invisibleButton.hidden = YES;
     invisibleButton.enabled = NO;
+    compass.hidden = NO;
+    [compass setAlpha:1.0];
+    compassInterference.hidden = YES;
+    [compassInterference setAlpha:0.0];
     
     // set car to current position and add it to NSUserDefaults
     NSLog(@"%@", self.carLocation);
@@ -354,7 +381,6 @@
     
     
     // update location on map
-    
     CLLocationCoordinate2D coordinate;
     coordinate.latitude = carLocation.coordinate.latitude;
     coordinate.longitude = carLocation.coordinate.longitude;
@@ -406,14 +432,12 @@
         NSString *timeWhenParkingExpires = [[NSString alloc] initWithFormat:@"%i",timeInSeconds + currentTimestamp];
         NSDictionary *locationAndTime = [[NSDictionary alloc] initWithObjectsAndKeys:timeWhenParkingExpires, @"timeWhenParkingExpires", carLocation, @"carLocation", nil];
         
-        
         // encrypt the shit first
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:locationAndTime];
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:data forKey:@"locationAndTime"];
         [defaults synchronize];
-        
         
         [self workOutAndUpdateTime];
         
@@ -425,10 +449,17 @@
     {
         // remove the old label text
         minutesLeftLabel.text = @"";
+        
+        // save location to NSUSerDefaults
+        NSDictionary *locationAndTime = [[NSDictionary alloc] initWithObjectsAndKeys:@"0", @"timeWhenParkingExpires", carLocation, @"carLocation", nil];
+        
+        // encrypt the shit first
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:locationAndTime];
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:data forKey:@"locationAndTime"];
+        [defaults synchronize];
     }
-    
-    
-    
 }
 
 - (IBAction) remindMeInPressed
@@ -442,8 +473,6 @@
     
     invisibleButton.hidden = YES;
     invisibleButton.enabled = NO;
-    
-
 }
 
 - (IBAction) datePickerDateChanged

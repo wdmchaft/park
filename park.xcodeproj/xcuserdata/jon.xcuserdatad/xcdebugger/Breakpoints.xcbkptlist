@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "park/ViewController.m"
-         timestampString = "357095625.895753"
+         timestampString = "357174762.97842"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "370"
-         endingLineNumber = "370"
+         startingLineNumber = "396"
+         endingLineNumber = "396"
          landmarkName = "-parkButtonPressed"
          landmarkType = "5">
       </FileBreakpoint>
@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "park/ViewController.m"
-         timestampString = "357095625.895753"
+         timestampString = "357174762.97842"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "276"
-         endingLineNumber = "276"
+         startingLineNumber = "295"
+         endingLineNumber = "295"
          landmarkName = "-closedButtonPressed"
          landmarkType = "5">
       </FileBreakpoint>
