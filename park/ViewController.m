@@ -141,9 +141,9 @@
     
     
     // work out the shit i don't understand
-    float dy = currentLocation.coordinate.latitude - carLocation.coordinate.latitude;
-    float dx = cosf(M_PI/180*carLocation.coordinate.latitude)*(currentLocation.coordinate.longitude - carLocation.coordinate.longitude);
-    float angle = atan2f(dy, dx);
+//    float dy = currentLocation.coordinate.latitude - carLocation.coordinate.latitude;
+//    float dx = cosf(M_PI/180*carLocation.coordinate.latitude)*(currentLocation.coordinate.longitude - carLocation.coordinate.longitude);
+//    float angle = atan2f(dy, dx);
     
 //    NSLog(@"Angle: %f", angle);
 //    NSLog(@"Degress from north: %f", angle * 57.2957795);
@@ -153,6 +153,8 @@
     
     
     // new algo to work out baring
+    
+    // algo is based upon http://www.movable-type.co.uk/scripts/latlong.html
     
     // currentlocation = lat1
     // car location = lat2
@@ -180,25 +182,25 @@
     // rotate the compass image
     compass.transform = CGAffineTransformMakeRotation((0 - (newHeading.magneticHeading * 0.0174532925)) + normalizedBearingToRadians);
     
-    // flip the shit
-    
-    float dlon2 = ((currentLocation.coordinate.longitude - carLocation.coordinate.longitude) * 0.0174532925);
-    
-    float y2 = sin(dlon2) * cos(currentLocation.coordinate.latitude);
-    float x2 = cos(carLocation.coordinate.latitude) * sin(currentLocation.coordinate.latitude) - sin(carLocation.coordinate.latitude) * cos(currentLocation.coordinate.latitude) * cos(dlon2);
-    
-    int bearing2 = (atan2(y2, x2) * 57.2957795);
-    
-    int normalizedBearing2 = (bearing2 + 360) % 360;
-    
-    int normalizedBeating2ToRadians = normalizedBearing2 * 0.0174532925;
-    
-    
-    // rotate new compass to test
-    compass2.transform = CGAffineTransformMakeRotation((0 - (newHeading.magneticHeading * 0.0174532925)) +normalizedBeating2ToRadians);
-    
-    
-    distanceTraveledLabel.text = [[NSString alloc] initWithFormat:@"C1: %i, C2: %i", normalizedBearing, normalizedBearing2];
+//    // flip the shit
+//    
+//    float dlon2 = ((currentLocation.coordinate.longitude - carLocation.coordinate.longitude) * 0.0174532925);
+//    
+//    float y2 = sin(dlon2) * cos(currentLocation.coordinate.latitude);
+//    float x2 = cos(carLocation.coordinate.latitude) * sin(currentLocation.coordinate.latitude) - sin(carLocation.coordinate.latitude) * cos(currentLocation.coordinate.latitude) * cos(dlon2);
+//    
+//    int bearing2 = (atan2(y2, x2) * 57.2957795);
+//    
+//    int normalizedBearing2 = (bearing2 + 360) % 360;
+//    
+//    int normalizedBeating2ToRadians = normalizedBearing2 * 0.0174532925;
+//    
+//    
+//    // rotate new compass to test
+//    compass2.transform = CGAffineTransformMakeRotation((0 - (newHeading.magneticHeading * 0.0174532925)) +normalizedBeating2ToRadians);
+//    
+//    
+//    distanceTraveledLabel.text = [[NSString alloc] initWithFormat:@"C1: %i, C2: %i", normalizedBearing, normalizedBearing2];
     
 }
 
