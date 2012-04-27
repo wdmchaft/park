@@ -284,8 +284,8 @@
     invisibleButton.hidden = NO;
     invisibleButton.enabled = YES;
     
-    closeButton.hidden = NO;
-    closedButtonOverlay.hidden = NO;
+    closeButton.hidden = YES;
+    closedButtonOverlay.hidden = YES;
     
     compassInterference.hidden = YES;
     
